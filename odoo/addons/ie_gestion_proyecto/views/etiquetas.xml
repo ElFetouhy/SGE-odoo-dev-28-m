@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="etiquetas_tree" model="ir.ui.view">
+            <field name="name">ie.etiquetas.tree</field>
+            <field name="model">ie.etiquetas</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="ie_gestion_proyecto.etiquetas_action_window" model="ir.actions.act_window">
+            <field name="name">Etiquetas</field>
+            <field name="res_model">ie.etiquetas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
