@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ie_gestion_proyecto_ie_proyecto,ie_proyecto,model_ie_proyecto,base.group_user,1,1,1,1
+access_ie_gestion_proyecto_ie_tareas,ie_tareas,model_ie_tareas,base.group_user,1,1,1,1
+access_ie_gestion_proyecto_ie_etiquetas,ie.etiquetas,model_ie_etiquetas,base.group_user,1,1,1,1

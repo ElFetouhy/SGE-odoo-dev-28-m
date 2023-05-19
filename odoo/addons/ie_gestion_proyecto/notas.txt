@@ -1,0 +1,26 @@
+·Vista search para filtrar los proyecto por estado 
+·Permisos solo a administrador para tareas y proyectos para borrar 
+·Añadir imagenes a los proyectos
+·Arreglar el widget de las nuevas tareas en los formularios de los proyectos
+ (solucion: redireccionar al formulario de tareas)
+·Organizar las tareas según las etiquetas (categorías y temas)
+·Comentarios y notas a cada tarea(sin terminar creo) tracking
+
+Cosas nuevas:
+	-Template/qweb bluce for para ver todas las tareas de cada proyecto en una lista
+	-Las columnas de estado en la vista kanban tareas (crear otro modelo estado para heredar los campos [done,to do, ...])
+	-Mover columnas de la vista kanban
+
+	1,2,3,4,5,6,7,8,9,10,11,13,19
+	
+	20,21,18,17,16,15,12
+
+# First fetch the dictionary with key-value pair that was defined in your field
+kay_val_dict = dict(self._fields['type'].selection) # here 'type' is field name
+
+# Now iterate loop for all pair of key-val and based on that you can set label
+for key, val in kay_val_dict.items():
+    if key == 'service':
+        # Do your code
+        Label = value
+        print("LABEL = ", Label)

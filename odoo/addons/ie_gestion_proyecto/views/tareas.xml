@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    <!--Vistas--> 
+        <!--Formulario--> 
+        <record id="tareas_form" model="ir.ui.view">
+            <field name="name">ie.tareas.form</field>
+            <field name="model">ie.tareas</field>
+            <field name="arch" type="xml">
+                <form>
+                <header>
+                    <field name="estado" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="to do,in progress,done" />
+                </header>
+                    
+                    <sheet>
+                        <field name="miembro_equipo" widget="image" class="oe_avatar"  />
+                        <group>
+                            <field name="name"/>
+                            <field name="proyecto_id" />
+                            <field name="fecha_finalizacion"/>
+                            <field name="user_id" widget="many2one_avatar"/>
+                            <field name="prioridad" />
+                        </group>
+                        <field name="etiqueta_ids"/>
+                        <notebook>
+                            <page name="comentarios" string="Notebook" >
+                               <field name="notas" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Arbol-->
+        <record id="tareas_view_tree" model="ir.ui.view">
+            <field name="name">ie.tareas.tree</field>
+            <field name="model">ie.tareas</field>
+            <field name="arch" type="xml">
+                <tree string="Lista de tareas">
+                    <field name="name"/>
+                    <field name="proyecto_id" />
+                    <field name="estado" />
+                    <field name="fecha_finalizacion"/>
+                    <field name="prioridad" />
+                </tree>
+            </field>
+        </record>
+        <!--Kanban-->
+        <record id="tareas_view_kanban" model="ir.ui.view">
+            <field name="name">ie.tareas.kanban</field>
+            <field name="model">ie.tareas</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="estado" class="oe_kanban_small_column">
+                    <field name="" />
+                    <templates>
+                        <t t-name="kanban-box">
+
+                            <!-- <t t-foreach="estado" t-as="titulo"> </t> -->
+                                <t t-if="kanban_header_title == Done">
+                                    <t t-set="color" t-value="4"/>
+                                </t>
+                                <t t-elif="kanban_header_title == To_do">
+                                    <t t-set="color" t-value="2"/>
+                                </t>
+                                <t t-else="kanban_header_title == In_progress">
+                                    <t t-set="color" t-value="3"/>
+                                </t>
+                                
+                           
+                            <div t-attf-class="#{kanban_color(color)} oe_kanban_global_click" >
+                                <div class="oe_kanban_details">
+                                    <div class="o_kanban_image_inner_pic">
+                                        <img t-alt="Avatar" t-att-src="kanban_image"/>
+                                    </div>
+                                    <ul>
+                                        <li class="mb4">
+                                            <strong><field name="name" /></strong>
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>Proyecto correspondiente: </strong><field name="proyecto_id" />
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>Prioridad: </strong><field name="prioridad" />
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>Fecha finalizacion: </strong><field name="fecha_finalizacion" />
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>Etiquetas: </strong><field name="etiqueta_ids" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </t>
+                    </templates>
+                
+                </kanban>
+            </field>
+        </record>
+    <!--Action-->
+        <record model="ir.actions.act_window" id="ie_gestion_proyecto.tareas_action_window">
+            <field name="name">Tareas</field>
+            <field name="res_model">ie.tareas</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+    </data>
+    
+
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+  <!--Vistas--> 
+        <!--Tree--> 
+    <record id="proyecto_tree" model="ir.ui.view">
+      <field name="name">ie.proyectos.tree</field>
+      <field name="model">ie.proyecto</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="" />
+        </tree>
+      </field>
+    </record>
+  <!--Formulario-->
+    <record id="proyecto_form" model="ir.ui.view">
+      <field name="name">ie.proyecto.form</field>
+      <field name="model">ie.proyecto</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet> 
+            <field name="imagen_proyecto" widget="image" class="oe_avatar"/>
+            <group string="Caracteristicas">
+              <field name="name"/>
+              <field name="descripcion"/>
+            </group>
+            <group name="tareas" string="Tareas a realizar">
+              <field name="tarea_ids">
+                  <tree>
+                      <field name="name" />
+                      <field name="estado" />
+                      <field name="fecha_finalizacion" />
+                  </tree>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+  <!--Kanban-->
+    <record id="proyecto_kanban" model="ir.ui.view">
+      <field name="name">ie.proyecto.kanban</field>
+      <field name="model">ie.proyecto</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="#{kanban_color(3)} oe_kanban_global_click">
+                <div class="oe_kanban_details">
+                  <ul>
+                      <li class="mb4">
+                        <strong>Nombre del proyeto: </strong><field name="name"></field>
+                      </li>
+
+                      <li>
+                        <strong>Descripcion: </strong><field name="descripcion"></field>
+                      </li>
+                  </ul>
+                </div>
+                <!--<div>
+                  
+                    <ul >
+                      <li  t-foreach="tarea_ids" t-as="estado">
+                        
+                          <t t-out="estado"/>
+                        
+                      </li>
+                    </ul>
+                 t-if="tareas_ids is not None" <a t-attf-href="#{ root }/ie.tareas/#{ name }"> </a>
+                </div>-->
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+  <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="ie_gestion_proyecto.proyecto_action_window">
+      <field name="name">Proyecto</field>
+      <field name="res_model">ie.proyecto</field>
+      <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    
+  </data>
+</odoo>

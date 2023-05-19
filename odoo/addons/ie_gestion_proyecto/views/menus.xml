@@ -1,0 +1,17 @@
+<odoo>
+<data> 
+    <!-- Top menu item -->
+
+    <menuitem name="IE_Gestion_Proyecto" id="ie_gestion_proyecto.menu_root" sequence="1"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Proyectos" id="ie_gestion_proyecto.proyectos" parent="ie_gestion_proyecto.menu_root" action="ie_gestion_proyecto.proyecto_action_window"/>
+    <menuitem name="Tareas" id="ie_gestion_proyecto.tareas" parent="ie_gestion_proyecto.menu_root" action="ie_gestion_proyecto.tareas_action_window"/>
+    <menuitem name="Etiquetas" id="ie_gestion_proyecto.etiquetas" parent="ie_gestion_proyecto.menu_root" action="ie_gestion_proyecto.etiquetas_action_window"/>
+    
+    <!-- actions -->
+
+    <!--<menuitem name="List" id="ie_gestion_proyecto.proyectos_item_1" parent="ie_gestion_proyecto.proyectos" />-->
+</data>
+</odoo>
